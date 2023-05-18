@@ -1,23 +1,24 @@
-import { View, StyleSheet } from 'react-native'
 import React from 'react'
 import CurrentWeather from './src/screens/CurrentWeather'
 import UpcomingWeather from './src/screens/UpcomingWeather'
 import City from './src/screens/City'
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
+
+const Tab = createBottomTabNavigator()
 const App = () => {
+  
   return (
-    <View style={styles.container}>
-      <CurrentWeather />
-      {/* <UpcomingWeather /> */}
-      {/* <City /> */}
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name={'Current'} component={CurrentWeather} />
+        <Tab.Screen name={'Upcoming'} component={UpcomingWeather} />
+        <Tab.Screen name={'City'} component={City} />
+      </Tab.Navigator>
+    </NavigationContainer>
+    
   )
 }
 
 export default App
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-})
