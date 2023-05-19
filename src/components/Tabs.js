@@ -33,16 +33,19 @@ const Tabs = ({ weather }) => {
           tabBarIcon: ({ focused }) => <Feather name={'droplet'} size={25} color={focused ? 'tomato' : 'black'} />
         }}
       >
-        {() => <CurrentWeather weatherData={weather.list[0]}/>}  
+        {() => <CurrentWeather weatherData={weather.list[0]} />}  
         {/* .list[0] is the current weather in weather.list */}
       </Tab.Screen>
+
       <Tab.Screen 
-        name={'Upcoming'} 
-        component={UpcomingWeather} 
+        name={'Upcoming'}
         options={{
           tabBarIcon: ({ focused }) => <Feather name={'clock'} size={25} color={focused ? 'tomato' : 'black'} />
         }}
-      />
+      >
+        {() => <UpcomingWeather weatherData={weather.list} />}
+      </Tab.Screen>
+
       <Tab.Screen 
         name={'City'} 
         component={City} 

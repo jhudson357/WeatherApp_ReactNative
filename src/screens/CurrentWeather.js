@@ -16,7 +16,7 @@ const CurrentWeather = ({ weatherData }) => {
     description,
     message
   } = styles
-  console.log(weatherData)
+  // console.log(weatherData)
 
   // destructure weatherData
   const { main: { temp, feels_like, temp_max, temp_min}, weather } = weatherData

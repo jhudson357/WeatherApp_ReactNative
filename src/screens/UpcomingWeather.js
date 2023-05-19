@@ -42,7 +42,9 @@ const DATA = [
 ]
 
 
-const UpcomingWeather = () => {
+const UpcomingWeather = ({ weatherData }) => {
+  console.log(weatherData)
+  
   const renderItem = ({item}) => (
     <ListItem 
       condition={item.weather[0].main} 
@@ -59,9 +61,8 @@ const UpcomingWeather = () => {
         source={require('../../assets/upcoming-background.jpg')} 
         style={image}
       >
-        <Text>Upcoming Weather</Text>
         <FlatList
-          data={DATA}
+          data={weatherData}
           renderItem={renderItem}
           keyExtractor={item => item.dt_txt}
         />
