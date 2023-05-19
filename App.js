@@ -7,7 +7,6 @@ import ErrorItem from './src/components/ErrorItem'
 
 const App = () => {
   const [loading, error, weather] = useGetWeather()
-  console.log(loading, error, weather)
 
   if (weather && weather.list) {
     return (
@@ -19,9 +18,9 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      {loading ?
-        <ActivityIndicator size="large" color="blue" /> :
-        <ErrorItem />
+      {error ?
+        <ErrorItem /> :
+        <ActivityIndicator size="large" color="blue" /> 
       }
     </View>
   )

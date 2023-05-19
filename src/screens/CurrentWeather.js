@@ -21,18 +21,18 @@ const CurrentWeather = ({ weatherData }) => {
   // destructure weatherData
   const { main: { temp, feels_like, temp_max, temp_min}, weather } = weatherData
   // pull weatherCondition from weather (which comes from weatherData^)
-  const weatherCondition = weather[0].main
+  const weatherCondition = weather[0]?.main
 
   return (
     <SafeAreaView 
       style={[
         wrapper, 
-        { backgroundColor: weatherType[weatherCondition].backgroundColor }
+        { backgroundColor: weatherType[weatherCondition]?.backgroundColor }
         // weatherType is our file in utilities folder
       ]}
     >
       <View style={container}>
-        <Feather name={weatherType[weatherCondition].icon} size={100} color="white" />
+        <Feather name={weatherType[weatherCondition]?.icon} size={100} color="white" />
         <Text style={tempStyles}>{`${temp}°F`}</Text>
         <Text style={feels}>{`Feels like ${feels_like}°F`}</Text>
         <RowText 
@@ -44,8 +44,8 @@ const CurrentWeather = ({ weatherData }) => {
         />
       </View>
       <RowText 
-        messageOne={weather[0].description}
-        messageTwo={weatherType[weatherCondition].message}
+        messageOne={weather[0]?.description}
+        messageTwo={weatherType[weatherCondition]?.message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}
@@ -59,7 +59,6 @@ export default CurrentWeather
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: 'pink',
   },
   container: {
     flex: 1,
@@ -90,11 +89,11 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   description: {
-    fontSize: 48,
+    fontSize: 43,
     color: 'white',
   },
   message: {
-    fontSize: 30,
+    fontSize: 25,
     color: 'white',
   },
 })
